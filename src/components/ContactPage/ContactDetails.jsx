@@ -8,20 +8,20 @@ const contactDetails = [
     icon: "HiChatBubbleLeftRight",
     heading: "Chat on us",
     description: "Our friendly team is here to help.",
-    details: "info@studynotion.com",
+    details: "ankitjaat24u@gmail.com",
   },
   {
     icon: "BiWorld",
     heading: "Visit us",
     description: "Come and say hello at our office HQ.",
     details:
-      "Horror colony,Borivali Mumbai ",
+      "Modinagar Ghaziabad U.P",
   },
   {
     icon: "IoCall",
     heading: "Call us",
     description: "Mon - Fri From 9am to 6pm",
-    details: "+91 9823130670",
+    details: "+91 8449035579",
   },
 ]
 
