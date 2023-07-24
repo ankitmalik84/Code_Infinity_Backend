@@ -5,7 +5,7 @@ import CTAButton from "../../../components/core/HomePage/Button";
 
 const LearningGridArray = [
   {
-    order: -1
+    order: -1,
     heading: "World-Class Learning for",
     highlightText: "Anyone, Anywhere",
     description:
