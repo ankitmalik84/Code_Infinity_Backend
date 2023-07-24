@@ -1,22 +1,13 @@
 import React, { useEffect } from "react";
 // importing aos
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 // Importing React Icons
 import { HiUsers } from "react-icons/hi";
 import { ImTree } from "react-icons/im";
 
 const CourseCard = ({ cardData, currentCard, setCurrentCard }) => {
-  useEffect(() => {
-    AOS.init();
-  }, [setCurrentCard, currentCard]);
   return (
     <div
-      data-aos='zoom-in'
-      data-aos-duration='400'
-      data-aos-offset='100'
-      data-aos-anchor-placement='top-center'
       className={`w-[360px] lg:w-[30%] ${
         currentCard === cardData?.heading
           ? "bg-white shadow-[12px_12px_0_0] shadow-yellow-50"
