@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-// importing aos
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
 import HighlightText from "./HighlightText";
 import CTAButton from "../../../components/core/HomePage/Button";
 import Know_your_progress from "../../../assets/Images/Know_your_progress.png";
@@ -9,18 +6,12 @@ import Compare_with_others from "../../../assets/Images/Compare_with_others.svg"
 import Plan_your_lessons from "../../../assets/Images/Plan_your_lessons.svg";
 
 const LearningLanguageSection = () => {
-  useEffect(() => {
-    AOS.init({
-      offset: 140,
-      duration: 500,
-      easing: "ease-in-sine",
-    });
-  }, []);
+
   return (
     <div>
       <div
         className='text-4xl font-semibold text-center my-10'
-        data-aos='fade-up'
+       
       >
         Your swiss knife for
         <HighlightText text={"learning any language"} />
@@ -33,19 +24,19 @@ const LearningLanguageSection = () => {
             src={Know_your_progress}
             alt=''
             className='object-contain  lg:-mr-32 '
-            data-aos='slide-left'
+           
           />
           <img
             src={Compare_with_others}
             alt=''
             className='object-contain lg:-mb-10 lg:-mt-0 -mt-12'
-            data-aos='slide-right'
+           
           />
           <img
             src={Plan_your_lessons}
             alt=''
             className='object-contain  lg:-ml-36 lg:-mt-5 -mt-16'
-            data-aos='slide-left'
+          
           />
         </div>
       </div>
