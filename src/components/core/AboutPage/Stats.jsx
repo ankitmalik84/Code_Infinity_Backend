@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
+
 
 const Stats = [
   { count: "5K", label: "Active Students", order: 1 },
@@ -10,16 +9,12 @@ const Stats = [
 ];
 
 const StatsComponenet = () => {
-  useEffect(() => {
-    AOS.init(); // Initialize AOS library
-  }, []);
+
 
   return (
     <div
       className='bg-richblack-700'
-      data-aos='slide-up'
-      data-aos-duration='400'
-      data-aos-offset='100'
+    
     >
       {/* Stats */}
       <div className='flex flex-col gap-10 justify-between w-11/12 max-w-maxContent text-white mx-auto '>
@@ -27,9 +22,7 @@ const StatsComponenet = () => {
           {Stats.map((data, index) => (
             <div
               className='flex flex-col py-10'
-              key={index}
-              data-aos={data.order < 3 ? "slide-right" : "slide-left"}
-              data-aos-duration='400'
+              key={index}   
             >
               <h1 className={`text-[32px] font-bold text-richblack-5`}>
                 {data.count}
