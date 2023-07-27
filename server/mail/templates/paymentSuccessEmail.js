@@ -67,8 +67,8 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
       
       <body>
           <div class="container">
-              <a href="https://study-alpha-plum.vercel.app"><img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png"
-                      alt="StudyNotion Logo"></a>
+              <a href="https://code-infinity.vercel.app"><img class="logo" src="https://i.ibb.co/RDSMk5X/mail-logo.png"
+                      alt="CodeInfinity Logo"></a>
               <div class="message">Course Payment Confirmation</div>
               <div class="body">
                   <p>Dear ${name},</p>
