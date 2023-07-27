@@ -25,7 +25,7 @@ exports.resetPasswordToken = async (req, res) => {
 		);
 		console.log("DETAILS", updatedDetails);
 
-		const url = `https://study-alpha-plum.vercel.app/update-password/${token}`;
+		const url = `https://code-infinity.vercel.app/update-password/${token}`;
 
 		await mailSender(
 			email,
