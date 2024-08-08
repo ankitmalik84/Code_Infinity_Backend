@@ -1,93 +1,65 @@
-# Code Infinity - EdTech Platform
-
+# Backend Overview of Code Infinity
 # :rocket: [Live Preview](https://code-infinity.vercel.app/)
 
-Code Infinity is a fully functional EdTech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
+The backend of Code Infinity is responsible for handling the core functionality of the platform, including user authentication, course management, payment processing, and data storage. It is built using Node.js and Express.js, and it interacts with a MongoDB database to manage user data and course content. Below is a detailed explanation of the backend components.
 
-## Table of Contents
+### Key Components of the Backend
 
-- [Introduction](#introduction)
-- [System Architecture](#system-architecture)
-  - [Front-end](#front-end)
-  - [Back-end](#back-end)
-  - [Database](#database)
-  - [Architecture Diagram](#architecture-diagram)
-- [API Design](#api-design)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
+#### 1. **User Authentication and Authorization**
 
-## Introduction
+   - **JWT (JSON Web Tokens):** Used for secure authentication. JWT tokens are issued upon user login and are required for accessing protected routes.
+   - **Bcrypt:** Used to hash user passwords before storing them in the database, ensuring password security.
+   - **OTP Verification:** The platform supports OTP (One-Time Password) verification for additional security during user registration or password recovery.
+   - **Roles:** Users are categorized into different roles, such as students and instructors, with different levels of access and permissions.
 
-Code Infinity aims to provide a seamless and interactive learning experience for students, making education more accessible and engaging. Additionally, the platform serves as a platform for instructors to showcase their expertise and connect with learners across the globe.
+#### 2. **Course Management**
 
-In the following sections, we will cover the technical details of the platform, including the system architecture, API design, installation, usage instructions, and potential future enhancements.
+   - **CRUD Operations:** Instructors can create, read, update, and delete courses. This includes managing course content such as video lectures, documents, and quizzes.
+   - **Markdown Formatting:** Course content can be written and stored in Markdown format, making it easy to render on the front-end.
+   - **Course Rating:** Students can rate and provide feedback on courses they have completed.
 
-## System Architecture
+#### 3. **Payment Integration**
 
-The Code Infinity EdTech platform consists of three main components: the front-end, the back-end, and the database. The platform follows a client-server architecture, with the front-end serving as the client and the back-end and database serving as the server.
+   - **Razorpay Integration:** The backend integrates with Razorpay for handling payments. Students can purchase courses, and the backend processes these transactions securely.
+   - **Order Management:** The backend handles the creation and management of orders, ensuring that transactions are properly recorded and associated with the correct users and courses.
 
-### Front-end
+#### 4. **Cloud-based Media Management**
 
-The front-end of the platform is built using ReactJS, which allows for the creation of dynamic and responsive user interfaces, crucial for providing an engaging learning experience to students. The front-end communicates with the back-end using RESTful API calls.
+   - **Cloudinary:** The platform uses Cloudinary for managing media content, including images, videos, and documents. Cloudinary provides scalable and secure storage, as well as optimization features for media delivery.
+   - **Media Uploads:** The backend handles the upload of media files to Cloudinary, storing references to these files in the MongoDB database.
 
-#### Front End Pages
+### Backend Structure
 
-For Students:
+#### 1. **Routes**
 
-- **Homepage:** A brief introduction to the platform with links to the course list and user details.
-- **Course List:** A list of all the courses available on the platform, along with their descriptions and ratings.
-- **Wishlist:** Displays all the courses that a student has added to their wishlist.
-- **Cart Checkout:** Allows the user to complete course purchases.
-- **Course Content:** Presents the course content for a particular course, including videos and related material.
-- **User Details:** Provides details about the student's account, including their name, email, and other relevant information.
-- **User Edit Details:** Allows students to edit their account details.
+   - **Auth Routes:** Handle user authentication, including login, registration, OTP verification, and password reset.
+   - **Course Routes:** Manage course-related operations such as creating, updating, deleting, and retrieving course details.
+   - **Payment Routes:** Manage payment processing and order management using Razorpay.
+   - **User Routes:** Manage user profiles, including updating profile information and retrieving user details.
 
-For Instructors:
+#### 2. **Controllers**
 
-- **Dashboard:** Offers an overview of the instructor's courses, along with ratings and feedback for each course.
-- **Insights:** Provides detailed insights into the instructor's courses, including the number of views, clicks, and other relevant metrics.
-- **Course Management Pages:** Enables instructors to create, update, and delete courses, as well as manage course content and pricing.
-- **View and Edit Profile Details:** Allows instructors to view and edit their account details.
+   - **Auth Controller:** Contains the logic for user authentication and authorization processes.
+   - **Course Controller:** Manages the logic for course-related operations, including handling media uploads, processing Markdown content, and interacting with the database.
+   - **Payment Controller:** Manages the payment flow, including creating orders, verifying payments, and handling Razorpay integration.
+   - **User Controller:** Contains the logic for managing user data, including profile updates and fetching user-specific information.
 
-#### Front-end Tools and Libraries
+#### 3. **Models**
 
-To build the front-end, we use frameworks and libraries such as ReactJS, CSS, and Tailwind for styling, and Redux for state management.
+   - **User Model:** Represents the user schema in MongoDB, including fields such as `name`, `email`, `password`, `role`, and `courses`.
+   - **Course Model:** Represents the course schema, including fields for `title`, `description`, `instructor`, `content`, `media`, and `ratings`.
+   - **Order Model:** Represents the order schema, storing transaction details and associating them with the relevant users and courses.
 
-### Back-end
+#### 4. **Middleware**
 
-The back-end of the platform is built using NodeJS and ExpressJS, providing APIs for the front-end to consume. These APIs include functionalities such as user authentication, course creation, and course consumption. The back-end also handles the logic for processing and storing the course content and user data.
+   - **Authentication Middleware:** Ensures that routes requiring authentication are protected, verifying JWT tokens before allowing access.
+   - **Authorization Middleware:** Checks user roles to ensure that only authorized users (e.g., instructors) can perform certain actions like creating or modifying courses.
 
-#### Back-end Features
+### Database Schema
 
-- **User Authentication and Authorization:** Students and instructors can sign up and log in to the platform using their email addresses and passwords. The platform also supports OTP (One-Time Password) verification and forgot password functionality for added security.
-- **Course Management:** Instructors can create, read, update, and delete courses, as well as manage course content and media. Students can view and rate courses.
-- **Payment Integration:** Students will purchase and enroll in courses by completing the checkout flow, followed by Razorpay integration for payment handling.
-- **Cloud-based Media Management:** StudyNotion uses Cloudinary, a cloud-based media management service, to store and manage all media content, including images, videos, and documents.
-- **Markdown Formatting:** Course content in document format is stored in Markdown format, allowing for easier display and rendering on the front-end.
-
-#### Back-end Frameworks, Libraries, and Tools
-
-The back-end of StudyNotion uses various frameworks, libraries, and tools to ensure its functionality and performance, including:
-
-- **Node.js:** Used as the primary framework for the back-end.
-- **Express.js:** Used as a web application framework, providing a range of features and tools for building web applications.
-- **MongoDB:** Used as the primary database, providing a flexible and scalable data storage solution.
-- **JWT (JSON Web Tokens):** Used for authentication and authorization, providing a secure and reliable way to manage user credentials.
-- **Bcrypt:** Used for password hashing, adding an extra layer of security to user data.
-- **Mongoose:** Used as an Object Data Modeling (ODM) library, providing a way to interact with MongoDB using JavaScript.
-
-#### Data Models and Database Schema
-
-The back-end of StudyNotion uses several data models and database schemas to manage data, including:
-
-- **Student Schema:** Includes fields such as name, email, password, and course details for each student.
-- **Instructor Schema:** Includes fields such as name, email, password, and course details for each instructor.
-- **Course Schema:** Includes fields such as course name, description, instructor details, and media content.
-
-### Database
-
-The database for the platform is built using MongoDB, a NoSQL database that provides a flexible and scalable data storage solution. MongoDB allows for the storage of unstructured and semi-structured data. The database stores the course content, user data, and other relevant information related to the platform.
+- **User Schema:** Contains user information such as name, email, password, and role. It also stores references to the courses a user has enrolled in or created.
+- **Course Schema:** Stores course-related information, including the instructor, course content (text, videos, documents), and ratings.
+- **Order Schema:** Stores payment and transaction details, associating orders with specific users and courses.
 
 ## API Design
 
@@ -95,25 +67,22 @@ The StudyNotion platform's API is designed following the REST architectural styl
 
 For detailed API documentation and endpoints, refer to the [API Documentation](https://www.notion.so/ankitmalik/API-Design-Of-Code-Infinity-WebSite-be8f811ac5c84f938508d6e395e81efc?pvs=4).
 
-## Installation
+### Configuration
 
-1. Clone the repository: `https://github.com/ankitmalik84/Code_Infinity_`
-2. Navigate to the project directory: `cd Code_Infinity_`
-3. Install dependencies: `npm install`
+To run the backend locally:
 
-## Configuration
+1. **Environment Variables:** Set up a `.env` file with the following environment variables:
+   - `MONGODB_URI`: Your MongoDB connection string.
+   - `JWT_SECRET`: A secret key for signing JWT tokens.
+   - `RAZORPAY_KEY_ID`: Your Razorpay key ID.
+   - `RAZORPAY_KEY_SECRET`: Your Razorpay key secret.
+   - `CLOUDINARY_URL`: Your Cloudinary URL for media uploads.
 
-1. Set up a MongoDB database and obtain the connection URL.
-2. Create a `.env` file in the root directory with the following environment variables:
-   ```
-   MONGODB_URI=<your-mongodb-connection-url>
-   JWT_SECRET=<your-jwt-secret-key>
-   ```
+2. **Dependencies:** Install the required dependencies using `npm install`.
 
-## Usage
+### Running the Backend
 
-1. Start the server: `npm start`
-2. Open a new terminal and navigate to the `client` directory: `cd client`
-3. Start the React development server: `npm run start`
+1. **Start the Backend Server:** Run `npm start` to start the Node.js server.
+2. **Accessing API Endpoints:** The backend will be accessible at `http://localhost:5000` (or the port specified in your environment configuration).
 
-Access the application in your browser at `http://localhost:3000`.
+This setup ensures a robust and scalable backend for the Code Infinity platform, handling everything from user authentication to course management and payment processing.
