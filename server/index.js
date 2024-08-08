@@ -45,7 +45,7 @@ app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 
 // // Handle preflight requests for all routes
-// app.options("*", cors()); // Allow CORS preflight for all routes
+app.options("*", cors()); // Allow CORS preflight for all routes
 //def route	
 
 app.get("/", (req, res) => {
