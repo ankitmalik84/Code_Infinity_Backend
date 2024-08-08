@@ -21,12 +21,6 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin: "*",
-		credentials: true,
-	})
-);
 
 app.use(
 	fileUpload({
@@ -37,13 +31,21 @@ app.use(
 //cloudinary connection
 cloudinaryConnect();
 
+// CORS setup
+app.use(cors({
+    origin: 'https://code-infinity.vercel.app', // Restrict to specific origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods
+    credentials: true // Allow credentials
+}));
+
 //routes
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 
-
+// Handle preflight requests for all routes
+app.options("*", cors()); // Allow CORS preflight for all routes
 //def route	
 
 app.get("/", (req, res) => {
