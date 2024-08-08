@@ -1,4 +1,4 @@
-# StudyNotion
+# Code Infinity Backend
 
 This is a EdTech platform. It uses React version **18.2** and Tailwind CSS version **3.2**.
 
