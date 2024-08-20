@@ -86,3 +86,7 @@ To run the backend locally:
 2. **Accessing API Endpoints:** The backend will be accessible at `http://localhost:5000` (or the port specified in your environment configuration).
 
 This setup ensures a robust and scalable backend for the Code Infinity platform, handling everything from user authentication to course management and payment processing.
+
+### For Deployment Guide On AWS
+
+For detailed instructions on how to deploy this project on an AWS EC2 instance, please refer to the [EC2 Deployment Guide](EC2_Deployment_Guide.md).
