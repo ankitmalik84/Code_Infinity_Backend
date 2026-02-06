@@ -31,11 +31,11 @@ app.use(
 //cloudinary connection
 cloudinaryConnect();
 
-// CORS setup
+// CORS setup - allow both production and localhost
 app.use(cors({
-    origin: 'https://code-infinity.vercel.app', // Restrict to specific origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods
-    credentials: true // Allow credentials
+    origin: ['https://code-infinity.vercel.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true
 }));
 
 //routes
