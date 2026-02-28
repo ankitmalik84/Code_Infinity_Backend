@@ -76,7 +76,7 @@ const passwordResetTemplate = (url) => {
 	  <body>
 		  <div class="container">
 			  <a href="https://code-infinity.vercel.app"><img class="logo"
-					  src="https://i.ibb.co/RDSMk5X/mail-logo.png" alt="CodeInfinity Logo"></a>
+					  src="https://code-infinity.vercel.app/Logo.png" alt="CodeInfinity Logo" style="background-color: #161D29; padding: 10px; border-radius: 8px;"></a>
 			  <div class="message">Password Reset</div>
 			  <div class="body">
 				  <p>Dear User,</p>
