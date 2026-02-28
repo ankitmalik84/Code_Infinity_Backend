@@ -1,5 +1,6 @@
 # Backend Overview of Code Infinity
 # :rocket: [Live Preview](https://code-infinity.vercel.app/)
+# ☁️ Backend API (Deployed on GCP Cloud Run): [Live API](https://code-infinity-backend-295384092370.us-central1.run.app/)
 
 The backend of Code Infinity is responsible for handling the core functionality of the platform, including user authentication, course management, payment processing, and data storage. It is built using Node.js and Express.js, and it interacts with a MongoDB database to manage user data and course content. Below is a detailed explanation of the backend components.
 
@@ -90,3 +91,8 @@ This setup ensures a robust and scalable backend for the Code Infinity platform,
 ### For Deployment Guide On AWS
 
 For detailed instructions on how to deploy this project on an AWS EC2 instance, please refer to the [EC2 Deployment Guide](EC2_Deployment_Guide.md).
+
+### GCP Deployment
+
+The backend API is currently deployed on Google Cloud Run and is accessible at:
+[https://code-infinity-backend-295384092370.us-central1.run.app/](https://code-infinity-backend-295384092370.us-central1.run.app/)
